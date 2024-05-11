@@ -20,14 +20,17 @@ Ensure you have the following installed on your machine:
 
    ```bash
    docker compose up -d
+   ```
 
 3. **Log in meltano container**
    ```bash
    docker exec -it training-meltano-meltano-1 /bin/bash
+   ```
 4. **Init Project**
    ```bash
    meltano init my_project
    export MELTANO_PROJECT_ROOT=/project/my_project
+   ```
 5. **Adding extractor**
    ```bash
    meltano add extractor tap-google-sheets

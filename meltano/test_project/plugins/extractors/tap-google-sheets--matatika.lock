@@ -1,0 +1,147 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-google-sheets",
+  "namespace": "tap_google_sheets",
+  "variant": "matatika",
+  "label": "Google Sheets",
+  "docs": "https://hub.meltano.com/extractors/tap-google-sheets--matatika",
+  "repo": "https://github.com/Matatika/tap-google-sheets",
+  "pip_url": "git+https://github.com/Matatika/tap-google-sheets.git",
+  "description": "Cloud Spreadsheets",
+  "logo_url": "https://hub.meltano.com/assets/logos/extractors/google-sheets.png",
+  "capabilities": [
+    "about",
+    "batch",
+    "catalog",
+    "discover",
+    "schema-flattening",
+    "state",
+    "stream-maps"
+  ],
+  "settings_group_validation": [
+    [
+      "oauth_credentials.client_id",
+      "oauth_credentials.client_secret",
+      "oauth_credentials.refresh_token",
+      "sheet_id"
+    ]
+  ],
+  "settings": [
+    {
+      "name": "batch_config.encoding.compression",
+      "kind": "options",
+      "label": "Batch Config Encoding Compression",
+      "description": "Compression format to use for batch files.",
+      "options": [
+        {
+          "label": "Gzip",
+          "value": "gzip"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "name": "batch_config.encoding.format",
+      "kind": "options",
+      "label": "Batch Config Encoding Format",
+      "description": "Format to use for batch files.",
+      "options": [
+        {
+          "label": "Jsonl",
+          "value": "jsonl"
+        }
+      ]
+    },
+    {
+      "name": "batch_config.storage.prefix",
+      "kind": "string",
+      "label": "Batch Config Storage Prefix",
+      "description": "Prefix to use when writing batch files."
+    },
+    {
+      "name": "batch_config.storage.root",
+      "kind": "string",
+      "label": "Batch Config Storage Root",
+      "description": "Root path to use when writing batch files."
+    },
+    {
+      "name": "child_sheet_name",
+      "kind": "string",
+      "label": "Child Sheet Name",
+      "description": "Optionally sync data from a different sheet in your Google Sheet"
+    },
+    {
+      "name": "flattening_enabled",
+      "kind": "boolean",
+      "label": "Flattening Enabled",
+      "description": "'True' to enable schema flattening and automatically expand nested properties."
+    },
+    {
+      "name": "flattening_max_depth",
+      "kind": "integer",
+      "label": "Flattening Max Depth",
+      "description": "The max depth to flatten schemas."
+    },
+    {
+      "name": "key_properties",
+      "kind": "array",
+      "label": "Key Properties",
+      "description": "Optionally choose one or more primary key columns"
+    },
+    {
+      "name": "oauth_credentials.client_id",
+      "kind": "string",
+      "label": "OAuth Credentials Client ID",
+      "description": "Your google client_id",
+      "sensitive": true
+    },
+    {
+      "name": "oauth_credentials.client_secret",
+      "kind": "string",
+      "label": "OAuth Credentials Client Secret",
+      "description": "Your google client_secret",
+      "sensitive": true
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "string",
+      "label": "OAuth Credentials Refresh Token",
+      "description": "Your google refresh token",
+      "sensitive": true
+    },
+    {
+      "name": "output_name",
+      "kind": "string",
+      "label": "Output Name",
+      "description": "Optionally rename your output file or table"
+    },
+    {
+      "name": "sheet_id",
+      "kind": "string",
+      "label": "Sheet ID",
+      "description": "Your google sheet id",
+      "sensitive": true
+    },
+    {
+      "name": "sheets",
+      "kind": "array",
+      "label": "Sheets",
+      "description": "The list of configs for each sheet/stream."
+    },
+    {
+      "name": "stream_map_config",
+      "kind": "object",
+      "label": "Stream Map Config",
+      "description": "User-defined config values to be used within map expressions."
+    },
+    {
+      "name": "stream_maps",
+      "kind": "object",
+      "label": "Stream Maps",
+      "description": "Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html)."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  meltano:
+    image: meltano/meltano:latest
+    volumes:
+      - ./meltano:/project
+    environment:
+      - MELTANO_PROJECT_ROOT=/project
+    entrypoint: ["tail", "-f", "/dev/null"]  # Keeps the container running indefinitely
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: meltano_loader
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"

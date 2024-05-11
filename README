@@ -1,0 +1,17 @@
+# Meltano Project with Docker Compose, PostgreSQL, and pgAdmin
+
+This repository contains the configuration for setting up a Meltano project with PostgreSQL using Docker Compose. Additionally, it provides a web-based UI for PostgreSQL management via pgAdmin.
+
+## Prerequisites
+
+Ensure you have the following installed on your machine:
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Setup Instructions
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/your-repository/meltano-docker-compose
+   cd meltano-docker-compose

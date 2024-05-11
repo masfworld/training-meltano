@@ -1,0 +1,21 @@
+version: 1
+default_environment: dev
+project_id: 685beca0-ce28-4777-aa49-f13c53c376aa
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-google-sheets
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-google-sheets.git
+  loaders:
+  - name: target-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-target-postgres
+    config:
+      database: meltano_loader
+      host: postgres
+      port: 5432
+      user: myuser

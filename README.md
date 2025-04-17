@@ -33,27 +33,51 @@ Ensure you have the following installed on your machine:
    ```
 5. **Adding extractor**
    ```bash
-   meltano add extractor tap-google-sheets
+   meltano add extractor tap-google-sheets --variant singer-io
    meltano config tap-google-sheets set --interactive
    ```
    You need to configure
    * `Client ID`
    * `Client Secret`
    * `Refresh Token`
-   * `Sheet id`
+   * `Spreedsheet id`
+
+   You can get all of these values in multiple steps (it's not super simple 😔):
+   1. You need to access to Google Cloud Console 
+      - Enable [Google Sheet API](https://console.cloud.google.com/apis/library/sheets.googleapis.com)
+      - Go to `APIs and Services` -> `Credentials` -> `Create Credentials` -> `OAuth client ID` -> `Application type` -> `Web application`
+      - You will need to set `Authorise redirect APIs` to https://developers.google.com/oauthplayground 
+      - You need to add your gmail user as a Test User in `Audience`
+      Ok, at this point, you have a `Client ID` and `Client Secret`. Let's see how to get `Refresh Token`
+   2. Go to: [OAuth 2.0 Playground](https://developers.google.com/oauthplayground )
+	   - Click the gear icon ⚙️ (top right) and:
+	      - Check “Use your own OAuth credentials”
+	      - Paste your Client ID and Client Secret
+	      - Scroll and select Google Sheets API v4
+	      - Then check https://www.googleapis.com/auth/spreadsheets.readonly
+	      - Click “Authorize APIs”
+	      - Log in with your Google account and allow access.
+	      - Click “Exchange authorization code for tokens”
+	      - Now you’ll see:
+	         - Refresh Token 🎉
+   3. Check your configuration executing `meltano config tap-google-sheets test`
+
 6. **Adding Loader**
    ```bash
    meltano add loader target-postgres
    meltano config target-postgres set --interactive
    ```
       You need to configure
-   * `host = postgres`
-   * `database = meltano_loader`
-   * `username = myuser`
-   * `password = mypassword`
-   * `port = 5432`
+   * `host = postgres` (option 12)
+   * `database = meltano_loader` (option 4)
+   * `user = myuser` (option 36)
+   * `password = mypassword` (option 15)
+   * `port = 5432` (option 16)
 
 7. **Execute pipeline**
    ```bash
    meltano elt tap-google-sheets target-postgres
    ```
+8. **Check ETL**
+   1. Go to http://localhost:8080
+   2. Log in in postgres `server=postgres` with `user=myuser` and `password=mypassword` and `database=meltano_loader`

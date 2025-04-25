@@ -77,7 +77,7 @@ Ensure you have the following installed on your machine:
 
 7. **Execute pipeline**
    ```bash
-   meltano elt tap-google-sheets target-postgres
+   meltano el tap-google-sheets target-postgres
    ```
 8. **Check ETL**
    1. Go to http://localhost:8080

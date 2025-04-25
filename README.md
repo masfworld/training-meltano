@@ -41,6 +41,7 @@ Ensure you have the following installed on your machine:
    * `Client Secret`
    * `Refresh Token`
    * `Spreedsheet id`
+   * `Start_date` -> You can set `2011-01-01T00:00:00.000Z`
 
    You can get all of these values in multiple steps (it's not super simple 😔):
    1. You need to access to Google Cloud Console 
@@ -80,4 +81,8 @@ Ensure you have the following installed on your machine:
    ```
 8. **Check ETL**
    1. Go to http://localhost:8080
-   2. Log in in postgres `server=postgres` with `user=myuser` and `password=mypassword` and `database=meltano_loader`
+   2. Log in in postgres with these parameters:
+      - `server=postgres`
+      - `user=myuser`
+      -  `password=mypassword`
+      - `database=meltano_loader`
